@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
   <style>
+    @font-face {
+      font-family: 'Urbanist';
+      src: url('assets/assets/fonts/urbanist/Urbanist-Regular.ttf') format('truetype'); /* Adjust the path as per your file structure */
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Urbanist', 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
@@ -16,6 +23,7 @@
       background-color: #e9ecef;
     }
     .contact-form {
+      font-family: 'Urbanist', 'Helvetica Neue', Arial, sans-serif; /* Apply Urbanist font to the form specifically */
       background: #fff;
       padding: 30px 40px;
       border-radius: 10px;
@@ -63,7 +71,7 @@
 </head>
 <body>
   <div class="contact-form">
-    <img src="assets/assets/logos/pharmacy-ecommerce-logo.png" alt="Medi Mart Logo">
+    <img src="your-logo-url.png" alt="Your Logo">
     <h2>Contact Us</h2>
     <form action="https://formspree.io/f/xrgnnvkp" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
