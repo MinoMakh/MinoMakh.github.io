@@ -38,7 +38,12 @@
       if (!isReferrerContact()) {
         // Redirect to 'contact.html' if the referrer is not 'contact.html'
         window.location.href = 'contact.html';
+        console.log("User didn't came from contact.html");
+        console.log(document.referrer);
+        
       } else {
+        console.log("User came from contact.html");
+        console.log(document.referrer);
         // Download main.dart.js if the user stays on the index page
         _flutter.loader.loadEntrypoint({
           serviceWorker: {
