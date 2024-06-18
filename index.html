@@ -55,8 +55,8 @@
 
     window.addEventListener('load', function(ev) {
        // Remove the query parameter from the URL without reloading the page
-            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-            window.history.replaceState({ path: newUrl }, '', newUrl);
+            // const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            // window.history.replaceState({ path: newUrl }, '', newUrl);
 
             // Download main.dart.js if the user stays on the index page
             _flutter.loader.loadEntrypoint({
