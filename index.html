@@ -41,21 +41,39 @@
 </head>
 <body>
   <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
+    // Function to get URL parameters
+    function getQueryParams() {
+        const params = {};
+        const queryString = window.location.search.substring(1);
+        const regex = /([^&=]+)=([^&]*)/g;
+        let match;
+        while (match = regex.exec(queryString)) {
+            params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
         }
-      });
-    });
+        return params;
+    }
 
-   
+    window.addEventListener('load', function(ev) {
+        const params = getQueryParams();
+
+        // Check if a specific parameter exists to determine whether to redirect
+        if (!params['showIndex']) {
+            // If the 'showIndex' parameter is not present or is false, redirect to contact.html
+            window.location.href = 'contact.html';
+        } else {
+            // Download main.dart.js if the user stays on the index page
+            _flutter.loader.loadEntrypoint({
+                serviceWorker: {
+                    serviceWorkerVersion: serviceWorkerVersion,
+                },
+                onEntrypointLoaded: function(engineInitializer) {
+                    engineInitializer.initializeEngine().then(function(appRunner) {
+                        appRunner.runApp();
+                    });
+                }
+            });
+        }
+    });
   </script>
 </body>
 </html>
