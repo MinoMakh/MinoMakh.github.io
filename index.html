@@ -61,6 +61,10 @@
             // If the 'showIndex' parameter is not present or is false, redirect to contact.html
             window.location.href = 'contact.html';
         } else {
+            // Remove the query parameter from the URL without reloading the page
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.pushState({ path: newUrl }, '', newUrl);
+
             // Download main.dart.js if the user stays on the index page
             _flutter.loader.loadEntrypoint({
                 serviceWorker: {
