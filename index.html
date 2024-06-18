@@ -54,14 +54,7 @@
     }
 
     window.addEventListener('load', function(ev) {
-        const params = getQueryParams();
-
-        // Check if a specific parameter exists to determine whether to redirect
-        if (!params['showIndex'] || params['showIndex'] !== 'true') {
-            // If the 'showIndex' parameter is not present or is not 'true', redirect to contact.html
-            window.location.href = 'contact.html';
-        } else {
-            // Remove the query parameter from the URL without reloading the page
+       // Remove the query parameter from the URL without reloading the page
             const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
             window.history.replaceState({ path: newUrl }, '', newUrl);
 
@@ -76,6 +69,13 @@
                     });
                 }
             });
+      
+        const params = getQueryParams();
+
+        // Check if a specific parameter exists to determine whether to redirect
+        if (!params['showIndex'] || params['showIndex'] !== 'true') {
+            // If the 'showIndex' parameter is not present or is not 'true', redirect to contact.html
+            window.location.href = 'contact.html';
         }
     });
   </script>
