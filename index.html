@@ -28,26 +28,15 @@
 </head>
 <body>
   <script>
-    // Function to get URL parameters
-    function getQueryParams() {
-      const params = {};
-      const queryString = window.location.search.substring(1);
-      const regex = /([^&=]+)=([^&]*)/g;
-      let match;
-      while (match = regex.exec(queryString)) {
-        params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
-      }
-      return params;
-    }
-
     window.addEventListener('load', function(ev) {
-      const params = getQueryParams();
+      // Function to check if the referrer ends with 'contact.html'
+      function isReferrerContact() {
+        return document.referrer.endsWith('/contact.html') || document.referrer.endsWith('/contact.html?');
+      }
 
-      // Check if the current path is the root or index.html
-      const isRootPath = window.location.pathname === '/' || window.location.pathname === '/index.html';
-
-      if (isRootPath && (!params['showIndex'] || params['showIndex'] !== 'true')) {
-        // If the 'showIndex' parameter is not present or is not 'true', redirect to contact.html
+      // Check if the referrer is 'contact.html'
+      if (!isReferrerContact()) {
+        // Redirect to 'contact.html' if the referrer is not 'contact.html'
         window.location.href = 'contact.html';
       } else {
         // Download main.dart.js if the user stays on the index page
