@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base href="/">
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+vbnet
+Copy code
+The path provided below has to start and end with a slash "/" in order for
+it to work correctly.
 
+For more details:
+* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+This is a placeholder for base href that will be replaced by the value of
+the `--base-href` argument provided to `flutter build`.
+-->
+
+  <base href="/">
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
-
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Medi-Market">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
-
   <title>Medi Market</title>
   <link rel="manifest" href="manifest.json">
-
   <script>
     // The value below is injected by flutter build, do not touch.
     const serviceWorkerVersion = "3886566350";
@@ -29,33 +39,17 @@
 <body>
   <script>
     window.addEventListener('load', function(ev) {
-      // Function to check if the referrer ends with 'contact.html'
-      function isReferrerContact() {
-        return document.referrer.endsWith('/contact.html') || document.referrer.endsWith('/contact.html?');
-      }
-
-      // Check if the referrer is 'contact.html'
-      if (!isReferrerContact()) {
-        // Redirect to 'contact.html' if the referrer is not 'contact.html'
-        window.location.href = 'contact.html';
-        console.log("User didn't came from contact.html");
-        console.log(document.referrer);
-        
-      } else {
-        console.log("User came from contact.html");
-        console.log(document.referrer);
-        // Download main.dart.js if the user stays on the index page
-        _flutter.loader.loadEntrypoint({
-          serviceWorker: {
-            serviceWorkerVersion: serviceWorkerVersion,
-          },
-          onEntrypointLoaded: function(engineInitializer) {
-            engineInitializer.initializeEngine().then(function(appRunner) {
-              appRunner.runApp();
-            });
-          }
-        });
-      }
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
     });
   </script>
 </body>
